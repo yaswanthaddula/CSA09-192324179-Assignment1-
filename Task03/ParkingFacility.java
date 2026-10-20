@@ -25,37 +25,52 @@ public class ParkingFacility {
         return null;
     }
 
-    // Releases a valid occupied slot
+    // Releases a slot
     public boolean release(int floor, int slot) {
+
+        // Validate floor number
         if (floor < 0 || floor >= slots.length) {
             return false;
         }
 
+        // Validate slot number
         if (slot < 0 || slot >= slots[floor].length) {
             return false;
         }
 
+        // Check whether the slot is already free
         if (slots[floor][slot] == null) {
             return false;
         }
 
+        // Free the slot
         slots[floor][slot] = null;
         return true;
     }
 
     public static void main(String[] args) {
-        // Do not change the main() method
+
+        // Floor 0 has 2 slots; floor 1 has 1 slot
         ParkingFacility p = new ParkingFacility(new int[]{2, 1});
 
-        System.out.println(java.util.Arrays.toString(p.allocate("TN01AB1111")));
-        System.out.println(java.util.Arrays.toString(p.allocate("TN02CD2222")));
-        System.out.println(java.util.Arrays.toString(p.allocate("TN03EF3333")));
-        System.out.println(java.util.Arrays.toString(p.allocate("TN04GH4444")));
+        System.out.println(java.util.Arrays.toString(
+                p.allocate("TN01AB1111")));
 
-        System.out.println(p.release(0, 1) + " " + p.release(0, 1) + " "
+        System.out.println(java.util.Arrays.toString(
+                p.allocate("TN02CD2222")));
+
+        System.out.println(java.util.Arrays.toString(
+                p.allocate("TN03EF3333")));
+
+        System.out.println(java.util.Arrays.toString(
+                p.allocate("TN04GH4444")));
+
+        System.out.println(
+                p.release(0, 1) + " "
+                + p.release(0, 1) + " "
                 + p.release(5, 0));
 
-        System.out.println(java.util.Arrays.toString(p.allocate("TN04GH4444")));
+        System.out.println(java.util.Arrays.toString(
+                p.allocate("TN04GH4444")));
     }
 }
-```
